@@ -6,7 +6,7 @@ from google.genai import types
 st.title("我的专属商业AI顾问系统")
 
 # 2. 门禁卡（务必替换为你自己的API Key）
-my_api_key = "AIzaSyA5J4bfpMPz4XdE8NyUSxEaEi4snsqCN_g"
+my_api_key = st.secrets["GEMINI_API_KEY"]
 client = genai.Client(api_key=my_api_key)
 
 my_config = types.GenerateContentConfig(
@@ -26,4 +26,5 @@ if st.button("发送"):
             config=my_config
         )
         # 5. 把AI传回来的文字，显示在网页上
+
         st.write(response.text)
